@@ -1,0 +1,47 @@
+---
+const response = await fetch('https://bk-ventas-production.up.railway.app/api/productos?pagination[page]=1&pagination[pageSize]=91');
+const data = await response.json();
+const detalle = '/producto/'
+---
+
+
+<div class="row">
+    {
+        data.data.map((item) => (
+
+        <div class="card custom-card" style="width: 90%;">
+            <a href={detalle + item.id}>
+                <img src={item.attributes.imagen} class="card-img-top" alt="..." class="card-img-top card-img-standard">
+            </a>
+            <div class="card-body">
+                <h5 class="card-title">{item.attributes.nombre}</h5>
+                <p class="card-text">Precio: {item.attributes.precioVenta} $</p>
+                <a href="#" class="btn btn-primary">Agregar</a>
+            </div>
+        </div>
+        ))
+    }
+</div>
+
+<style>
+    .custom-card {
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+         /* Alinea los elementos en la parte superior e inferior */
+    }
+
+    .card-body {
+        margin-bottom: 1rem;
+        text-align: center; /* Centra el texto dentro del cuerpo de la tarjeta */
+    }
+
+    /* Estilos para la imagen */
+    .card-img-standard {
+        width: 100%; /* Establece el ancho al 100% */
+        height: auto; /* Mantiene la proporción de aspecto */
+    }
+</style>
+
+
