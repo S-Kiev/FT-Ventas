@@ -2,7 +2,7 @@
 import { c as createAstro, d as createComponent, r as renderTemplate, h as renderComponent } from '../astro_AjHO-7_l.mjs';
 import 'kleur/colors';
 import 'html-escaper';
-import { $ as $$Layout } from './_id__A7-xgyV0.mjs';
+import { $ as $$Layout } from './_id__BSBV1cc5.mjs';
 import { jsxs, jsx } from 'react/jsx-runtime';
 import { useState, useEffect } from 'react';
 import { useStore } from '@nanostores/react';
@@ -107,75 +107,47 @@ const Table = () => {
     modificarItem(item);
   };
   return /* @__PURE__ */ jsxs("div", { className: "container", children: [
-    /* @__PURE__ */ jsx("div", { className: "m-2 col-end justify-content-center", children: /* @__PURE__ */ jsxs(
-      "table",
-      {
-        className: "w-full text-sm text-left text-gray-500 dark:text-gray-400",
-        style: { width: "100%" },
-        children: [
-          /* @__PURE__ */ jsx("thead", { className: "text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400", children: /* @__PURE__ */ jsxs("tr", { children: [
-            /* @__PURE__ */ jsx("th", { scope: "col", className: "px-6 py-3", children: "Nombre" }),
-            /* @__PURE__ */ jsx("th", { scope: "col", className: "px-6 py-3", children: "Precio" }),
-            /* @__PURE__ */ jsx("th", { scope: "col", className: "px-6 py-3", children: "Sumar" }),
-            /* @__PURE__ */ jsx("th", { scope: "col", className: "px-6 py-3", children: "Cantidad" }),
-            /* @__PURE__ */ jsx("th", { scope: "col", className: "px-6 py-3", children: "Restar" }),
-            /* @__PURE__ */ jsx("th", { scope: "col", className: "px-6 py-3", children: "SubTotal" }),
-            /* @__PURE__ */ jsx("th", { scope: "col", className: "px-6 py-3", children: "Quitar" })
-          ] }) }),
-          /* @__PURE__ */ jsxs("tbody", { children: [
-            $carrito.map((item) => /* @__PURE__ */ jsxs(
-              "tr",
-              {
-                className: "bg-white border-b dark:bg-gray-800 dark:border-gray-700",
-                children: [
-                  /* @__PURE__ */ jsx("td", { className: "px-6 py-4", children: item.attributes.nombre }),
-                  /* @__PURE__ */ jsx("td", { className: "px-6 py-4", children: item.attributes.precioVenta }),
-                  /* @__PURE__ */ jsx("td", { className: "px-6 py-4", children: /* @__PURE__ */ jsx(
-                    "button",
-                    {
-                      onClick: () => sumarCantidad(item),
-                      className: "font-medium btn btn-primary hover:underline",
-                      children: "+"
-                    }
-                  ) }),
-                  /* @__PURE__ */ jsx("td", { className: "px-6 py-4", children: item.cantidad }),
-                  /* @__PURE__ */ jsx("td", { className: "px-6 py-4", children: /* @__PURE__ */ jsx(
-                    "button",
-                    {
-                      onClick: () => restarCantidad(item),
-                      className: "font-medium btn btn-success hover:underline",
-                      children: "-"
-                    }
-                  ) }),
-                  /* @__PURE__ */ jsx("td", { className: "px-6 py-4", children: item.attributes.precioVenta * item.cantidad }),
-                  /* @__PURE__ */ jsx("td", { className: "px-6 py-4", children: /* @__PURE__ */ jsx(
-                    "button",
-                    {
-                      onClick: () => borrarItem(item.id),
-                      className: "font-medium text-red-600 dark:text-red-500 hover:underline",
-                      children: "Quitar"
-                    }
-                  ) })
-                ]
-              },
-              item.id
-            )),
-            /* @__PURE__ */ jsxs("tr", { className: "bg-white border-b dark:bg-gray-800 dark:border-gray-700", children: [
-              /* @__PURE__ */ jsx("td", { className: "px-6 py-4", children: "Total" }),
-              /* @__PURE__ */ jsx("td", { className: "px-6 py-4", children: total }),
-              /* @__PURE__ */ jsx("td", { className: "px-6 py-4", children: /* @__PURE__ */ jsx(
-                "button",
-                {
-                  onClick: () => vaciarCarrito(),
-                  className: "btn btn-danger",
-                  children: "Vaciar"
-                }
-              ) })
-            ] })
+    /* @__PURE__ */ jsx("div", { className: "m-2 col-end justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "table-responsive", children: /* @__PURE__ */ jsxs("table", { className: "table", children: [
+      /* @__PURE__ */ jsx("thead", { children: /* @__PURE__ */ jsxs("tr", { children: [
+        /* @__PURE__ */ jsx("th", { children: "Productos" }),
+        /* @__PURE__ */ jsx("th", { children: "Precio" }),
+        /* @__PURE__ */ jsx("th", { children: "Modificar" })
+      ] }) }),
+      /* @__PURE__ */ jsxs("tbody", { children: [
+        $carrito.map((item) => /* @__PURE__ */ jsxs("tr", { children: [
+          /* @__PURE__ */ jsxs("td", { children: [
+            /* @__PURE__ */ jsx("strong", { children: "Nombre:" }),
+            " ",
+            item.attributes.nombre,
+            /* @__PURE__ */ jsx("br", {}),
+            /* @__PURE__ */ jsx("strong", { children: "Cantidad:" }),
+            " ",
+            item.cantidad,
+            /* @__PURE__ */ jsx("br", {}),
+            /* @__PURE__ */ jsx("strong", { children: "Subtotal:" }),
+            " ",
+            item.attributes.precioVenta * item.cantidad,
+            " $"
+          ] }),
+          /* @__PURE__ */ jsxs("td", { children: [
+            item.attributes.precioVenta,
+            " $"
+          ] }),
+          /* @__PURE__ */ jsxs("td", { children: [
+            /* @__PURE__ */ jsx("button", { onClick: () => sumarCantidad(item), className: "btn btn-primary m-1", children: "+" }),
+            /* @__PURE__ */ jsx("button", { onClick: () => restarCantidad(item), className: "btn btn-success m-1", children: "-" }),
+            /* @__PURE__ */ jsx("button", { onClick: () => borrarItem(item.id), className: "btn btn-danger m-1", children: "Quitar" })
           ] })
-        ]
-      }
-    ) }),
+        ] }, item.id)),
+        /* @__PURE__ */ jsxs("tr", { children: [
+          /* @__PURE__ */ jsx("td", { children: "Total" }),
+          /* @__PURE__ */ jsx("td", { colSpan: "2", children: /* @__PURE__ */ jsxs("strong", { children: [
+            total,
+            " $"
+          ] }) })
+        ] })
+      ] })
+    ] }) }) }),
     /* @__PURE__ */ jsx("button", { onClick: () => confirmarVenta(), className: "btn btn-warning m-4", children: "Confirmar" })
   ] });
 };

@@ -83,96 +83,55 @@ const Table = () => {
   };
 
   return (
-
-        <div className="container">
-        <div className="m-2 col-end justify-content-center">
-          <table
-            className="w-full text-sm text-left text-gray-500 dark:text-gray-400"
-            style={{ width: "100%" }}
-          >
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <div className="container">
+      <div className="m-2 col-end justify-content-center">
+        <div className="table-responsive">
+          <table className="table">
+            <thead>
               <tr>
-                <th scope="col" className="px-6 py-3">
-                  Nombre
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Precio
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Sumar
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Cantidad
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Restar
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  SubTotal
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Quitar
-                </th>
+                <th>Productos</th>
+                <th>Precio</th>
+                <th>Modificar</th>
               </tr>
             </thead>
             <tbody>
               {$carrito.map((item) => (
-                <tr
-                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
-                  key={item.id}
-                >
-                  <td className="px-6 py-4">{item.attributes.nombre}</td>
-                  <td className="px-6 py-4">{item.attributes.precioVenta}</td>
-                  <td className="px-6 py-4">
-                    <button
-                      onClick={() => sumarCantidad(item)}
-                      className="font-medium btn btn-primary hover:underline"
-                    >
+                <tr key={item.id}>
+                  <td>
+                  <strong>Nombre:</strong> {item.attributes.nombre}
+                    <br />
+                    <strong>Cantidad:</strong> {item.cantidad}
+                    <br />
+                    <strong>Subtotal:</strong> {item.attributes.precioVenta * item.cantidad} $
+                  </td>
+                  <td>{item.attributes.precioVenta} $</td>
+                  <td>
+                    <button onClick={() => sumarCantidad(item)} className="btn btn-primary m-1">
                       +
                     </button>
-                  </td>
-                  <td className="px-6 py-4">{item.cantidad}</td>
-                  <td className="px-6 py-4">
-                    <button
-                      onClick={() => restarCantidad(item)}
-                      className="font-medium btn btn-success hover:underline"
-                    >
+                    <button onClick={() => restarCantidad(item)} className="btn btn-success m-1">
                       -
                     </button>
-                  </td>
-                  <td className="px-6 py-4">
-                    {item.attributes.precioVenta * item.cantidad}
-                  </td>
-                  <td className="px-6 py-4">
-                    <button
-                      onClick={() => borrarItem(item.id)}
-                      className="font-medium text-red-600 dark:text-red-500 hover:underline"
-                    >
+                    <button onClick={() => borrarItem(item.id)} className="btn btn-danger m-1">
                       Quitar
                     </button>
                   </td>
                 </tr>
               ))}
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <td className="px-6 py-4">Total</td>
-                <td className="px-6 py-4">{total}</td>
-                <td className="px-6 py-4">
-                  <button
-                    onClick={() => vaciarCarrito()}
-                    className="btn btn-danger"
-                  >
-                    Vaciar
-                  </button>
+              <tr>
+                <td>Total</td>
+                <td colSpan="2">
+                  <strong>{total} $</strong>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
-        <button onClick={() => confirmarVenta()} className="btn btn-warning m-4">
-          Confirmar
-        </button>
       </div>
-
+      <button onClick={() => confirmarVenta()} className="btn btn-warning m-4">
+        Confirmar
+      </button>
+    </div>
   );
 };
 
