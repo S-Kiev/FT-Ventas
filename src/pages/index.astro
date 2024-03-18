@@ -1,11 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Productos from '@components/Productos.astro';
+// @ts-ignore
+import Main from '../components/Main.jsx';
 ---
 
+
+
 <Layout>
-	<h1>Hola</h1>
-		<Productos />
+	<Main client:load/>
 </Layout>
 
 
