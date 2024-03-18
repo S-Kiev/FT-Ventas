@@ -136,7 +136,7 @@ const Table = () => {
           /* @__PURE__ */ jsxs("td", { children: [
             /* @__PURE__ */ jsx("button", { onClick: () => sumarCantidad(item), className: "btn btn-primary m-1", children: "+" }),
             /* @__PURE__ */ jsx("button", { onClick: () => restarCantidad(item), className: "btn btn-success m-1", children: "-" }),
-            /* @__PURE__ */ jsx("button", { onClick: () => borrarItem(item.id), className: "btn btn-danger m-1", children: "Quitar" })
+            /* @__PURE__ */ jsx("button", { onClick: () => borrarItem(item.id), className: "btn btn-danger m-1", children: "X" })
           ] })
         ] }, item.id)),
         /* @__PURE__ */ jsxs("tr", { children: [

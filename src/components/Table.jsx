@@ -113,7 +113,7 @@ const Table = () => {
                       -
                     </button>
                     <button onClick={() => borrarItem(item.id)} className="btn btn-danger m-1">
-                      Quitar
+                      X
                     </button>
                   </td>
                 </tr>

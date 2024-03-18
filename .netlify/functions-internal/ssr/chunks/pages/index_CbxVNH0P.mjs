@@ -5,7 +5,7 @@ import 'html-escaper';
 import { $ as $$Layout } from './_id__BSBV1cc5.mjs';
 import { jsxs, jsx } from 'react/jsx-runtime';
 import { useState, useEffect } from 'react';
-import { a as agregarCarrito, b as borrarItem, T as Table } from './carrito_C4pkT3Fb.mjs';
+import { a as agregarCarrito, b as borrarItem, T as Table } from './carrito_BVTGsC1c.mjs';
 /* empty css                          */
 
 const CardProducto = () => {
