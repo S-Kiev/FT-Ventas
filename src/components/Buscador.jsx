@@ -1,6 +1,7 @@
 
 
 
+
 /*
 import { useState, useEffect } from "react"
 import productos from '../JSON_Productos/productos.json'
@@ -49,4 +50,5 @@ const Buscador = ({ handleSearch, scrollTablaVentas }) => {
 export default Buscador
 
   
+
 */
