@@ -15,8 +15,11 @@ const Table = () => {
   useEffect(() => {
     const productos = $carrito.map((item) => ({
       producto: item.id,
+      nombre: item.attributes.nombre,
+      precioBase: item.attributes.precioBase,
+      precioVenta: item.attributes.precioVenta,
       cantidad: item.cantidad,
-      precio: item.attributes.precioVenta,
+      ganancia: item.attributes.precioVenta - item.attributes.precioBase,
       subtotal: item.attributes.precioVenta * item.cantidad,
     }));
     setProductosVenta(productos);
