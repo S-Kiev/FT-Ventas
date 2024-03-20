@@ -38,6 +38,7 @@ const Table = () => {
           fecha: obtenerFecha(),
           cliente: null,
           productos: productosVenta,
+          total: total
         },
       };
       fetch("https://bk-ventas-production.up.railway.app/api/ventas", {
@@ -72,6 +73,15 @@ const Table = () => {
     item.cantidad += 1;
 
     modificarItem(item);
+  };
+
+  const descontar = (item) => {
+
+    console.log(item.attributes);
+    if (item.attributes.precioBase < item.attributes.precioVenta) {
+      item.attributes.precioVenta -= 5;
+      modificarItem(item);
+    }
   };
 
   // Función para restar la cantidad
@@ -117,6 +127,9 @@ const Table = () => {
                     </button>
                     <button onClick={() => borrarItem(item.id)} className="btn btn-danger m-1">
                       X
+                    </button>
+                    <button onClick={() => descontar(item)} className="btn btn-warning m-1">
+                      D
                     </button>
                   </td>
                 </tr>

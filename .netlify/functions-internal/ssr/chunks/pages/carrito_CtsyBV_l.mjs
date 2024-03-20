@@ -75,7 +75,8 @@ const Table = () => {
         data: {
           fecha: obtenerFecha(),
           cliente: null,
-          productos: productosVenta
+          productos: productosVenta,
+          total
         }
       };
       fetch("https://bk-ventas-production.up.railway.app/api/ventas", {
@@ -101,6 +102,13 @@ const Table = () => {
   const sumarCantidad = (item) => {
     item.cantidad += 1;
     modificarItem(item);
+  };
+  const descontar = (item) => {
+    console.log(item.attributes);
+    if (item.attributes.precioBase < item.attributes.precioVenta) {
+      item.attributes.precioVenta -= 5;
+      modificarItem(item);
+    }
   };
   const restarCantidad = (item) => {
     if (item.cantidad <= 1) {
@@ -139,7 +147,8 @@ const Table = () => {
           /* @__PURE__ */ jsxs("td", { children: [
             /* @__PURE__ */ jsx("button", { onClick: () => sumarCantidad(item), className: "btn btn-primary m-1", children: "+" }),
             /* @__PURE__ */ jsx("button", { onClick: () => restarCantidad(item), className: "btn btn-success m-1", children: "-" }),
-            /* @__PURE__ */ jsx("button", { onClick: () => borrarItem(item.id), className: "btn btn-danger m-1", children: "X" })
+            /* @__PURE__ */ jsx("button", { onClick: () => borrarItem(item.id), className: "btn btn-danger m-1", children: "X" }),
+            /* @__PURE__ */ jsx("button", { onClick: () => descontar(item), className: "btn btn-warning m-1", children: "D" })
           ] })
         ] }, item.id)),
         /* @__PURE__ */ jsxs("tr", { children: [

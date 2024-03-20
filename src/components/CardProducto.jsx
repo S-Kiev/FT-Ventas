@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { agregarCarrito, borrarItem } from "../carritoStore.js";
+import { useState, useEffect } from "react";
+import { carrito, agregarCarrito, borrarItem } from "../carritoStore.js";
+import { useStore } from "@nanostores/react";
 import "../style/CardProducto.css";
 
 const CardProducto = () => {
@@ -9,6 +10,7 @@ const CardProducto = () => {
   const [categoria, setCategoria] = useState("todas");
   const [detalle, setDetalle] = useState("/producto/");
   const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,6 +58,8 @@ const CardProducto = () => {
   
     setFiltrados(filteredProducts);
   };
+
+
 
   return (
     <div className="row">
